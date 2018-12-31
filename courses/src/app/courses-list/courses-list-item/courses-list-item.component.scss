@@ -1,0 +1,11 @@
+.course-list-item{
+    margin: 1rem 0;
+
+    &:hover, &:focus{
+        z-index: 0;
+    }
+
+    .date{
+        text-align: right;
+    }
+}

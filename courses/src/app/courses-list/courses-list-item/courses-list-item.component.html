@@ -1,3 +1,20 @@
-<p>
-  {{coursesItem.title}}
-</p>
+<a href="#" class="course-list-item list-group-item list-group-item-action flex-column align-items-start">
+  <div class="row">
+    <div class="col-10">
+      <div class="w-100">
+        <div class="row">
+          <h5 class="mb-1 col-8 title">{{coursesItem.title}}</h5>
+          <small class="col-2 duration"><b>{{coursesItem.duration}} mins</b></small>
+          <small class="col-2 date"><b>{{coursesItem.date | date}}</b></small>
+        </div>
+        <div class="row">
+            <p class="mb-1 col-12">{{coursesItem.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-outline-secondary dark w-100 col-12 mb-4">Edit</button>
+        <button class="btn btn-outline-secondary dark w-100 col-12" (click)="onDeleteClick()">Delete</button>
+    </div>
+  </div>
+</a>
