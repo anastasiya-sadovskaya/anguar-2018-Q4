@@ -55,7 +55,7 @@ export class CoursesListComponent implements OnInit {
     console.log("See more");
   }
 
-  onCourseItemDelete(itemId:number){
+  onCourseItemDelete(itemId:number): void{
     console.log(itemId);
   }
 

@@ -15,6 +15,7 @@ export class SearchSectionComponent implements OnInit {
 
   onSearchClick(): void {
     console.log(this.searchRequest);
+    this.searchRequest = '';
   }
 
 }
