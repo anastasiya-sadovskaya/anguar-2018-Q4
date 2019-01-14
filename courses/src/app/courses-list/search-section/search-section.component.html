@@ -1,0 +1,15 @@
+<div class="search-panel">
+    <form>
+      <div class="row">
+        <div class="col-5">
+          <input type="text" [(ngModel)]="searchRequest" class="form-control" name="search" id="search" placeholder="Search...">
+        </div>
+        <div class="col-1">
+            <button type="submit" class="btn btn-outline-secondary dark" (click)="onSearchClick()">Search</button>
+        </div>
+        <div class="col-2 offset-md-4">
+            <button class="btn btn-outline-secondary dark w-100">Add course</button>
+        </div>        
+      </div>
+    </form>
+</div>

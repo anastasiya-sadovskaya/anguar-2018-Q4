@@ -1,4 +1,14 @@
-<p>
-  header works!
-  <app-logo></app-logo>
-</p>
+<header class="header">
+    <div class="container">
+  <a href="#" class="header__logo">
+    <img src="assets/img/logo.png" alt="logo" />
+  </a>
+  <div class="header__controls float-right">
+    <div class="header__user">
+      <!-- <img src="assets/img/user-photo.jpg" alt="{{ userName }}" /> -->
+      <span class="header__user-name">{{ userName }}</span>
+    </div>
+    <button class="btn btn-outline-light btn-sm" type="button">Log Off</button>
+  </div>
+  </div>
+</header>

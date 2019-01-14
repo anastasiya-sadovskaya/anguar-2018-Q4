@@ -1,6 +1,7 @@
-<p>
-  courses-list works!
-  <app-courses-list-item *ngFor="let item of coursesList" [coursesItem]="item"></app-courses-list-item>
-</p>
+<app-search-section></app-search-section>
+<div class="courses-list list-group">
+  <app-courses-list-item *ngFor="let item of coursesList" [coursesItem]="item" (courseItemDelete)="onCourseItemDelete($event)" ></app-courses-list-item>
+  <button class="btn btn-outline-secondary dark w-100 col-12 mb-4" (click)="onSeeMoreClick()">See more</button>
+</div>
 
 <!-- [coursesItem]="item" -->

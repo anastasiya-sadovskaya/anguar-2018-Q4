@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-section.component.scss']
 })
 export class SearchSectionComponent implements OnInit {
+  public searchRequest:string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSearchClick(): void {
+    console.log(this.searchRequest);
+    this.searchRequest = '';
   }
 
 }
