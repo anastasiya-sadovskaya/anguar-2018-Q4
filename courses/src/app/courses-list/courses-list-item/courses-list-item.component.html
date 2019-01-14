@@ -8,13 +8,13 @@
           <small class="col-2 date"><b>{{coursesItem.date | date}}</b></small>
         </div>
         <div class="row">
-            <p class="mb-1 col-12">{{coursesItem.description}}</p>
+            <p class="mb-1 col-12 description">{{coursesItem.description}}</p>
         </div>
       </div>
     </div>
     <div class="col-2">
         <button class="btn btn-outline-secondary dark w-100 col-12 mb-4">Edit</button>
-        <button class="btn btn-outline-secondary dark w-100 col-12" (click)="onDeleteClick($event); false">Delete</button>
+        <button id="deleteCourseItemBtn" class="btn btn-outline-secondary dark w-100 col-12" (click)="onDeleteClick(); false">Delete</button>
     </div>
   </div>
 </a>

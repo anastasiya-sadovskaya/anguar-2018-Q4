@@ -22,4 +22,13 @@ describe('BreadcrumbsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain "Courses', () => {
+    fixture.detectChanges();
+
+    const element:HTMLElement = fixture.nativeElement;
+    const content:HTMLElement = element.querySelector('.breadcrumb');
+    
+    expect(content.textContent).toBe('Courses');
+  });
 });

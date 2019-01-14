@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { SearchSectionComponent } from './search-section.component';
 
@@ -8,7 +11,9 @@ describe('SearchSectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchSectionComponent ]
+      imports: [ FormsModule ],
+      declarations: [ SearchSectionComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
   }));
@@ -22,4 +27,18 @@ describe('SearchSectionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Click on search button should log text from input', () => {
+    const req: string = 'some request';
+    const searchInputElement: HTMLInputElement = fixture.nativeElement.querySelector('#searchInput');
+    const searchBtnElement: HTMLButtonElement = fixture.nativeElement.querySelector('#searchBtn');
+
+    spyOn(component, 'onSearchClick');
+    searchInputElement.value = req;
+    fixture.detectChanges();
+
+    searchBtnElement.click();
+    
+    expect(component.onSearchClick).toHaveBeenCalled();
+  });  
 });
