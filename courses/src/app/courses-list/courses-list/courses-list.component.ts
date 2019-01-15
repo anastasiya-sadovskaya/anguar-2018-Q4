@@ -12,7 +12,7 @@ export class CoursesListComponent implements OnInit {
     {
       id: 1,
       title: "Video 1", 
-      date: "2018-11-22T17:23:43.348Z",
+      date: "2018-11-11T15:22:22.348Z",
       duration: 48,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },

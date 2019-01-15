@@ -17,5 +17,4 @@ export class SearchSectionComponent implements OnInit {
     console.log(this.searchRequest);
     this.searchRequest = '';
   }
-
 }
