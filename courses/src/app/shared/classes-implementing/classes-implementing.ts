@@ -5,7 +5,7 @@ export class CourseItem implements CoursesListItem{
     constructor(
         public id: number, 
         public title: string, 
-        public date: string, 
+        public date: Date, 
         public duration: number, 
         public description: string
     ){ }

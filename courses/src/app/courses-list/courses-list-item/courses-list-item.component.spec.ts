@@ -28,7 +28,7 @@ describe('CoursesListItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
-    component.course = new CourseItem(6, 'Video 6', '2018-11-11T15:22:22.348Z', 120, 'Lorem ipsum dolor sit amet');
+    component.course = new CourseItem(6, 'Video 6', new Date(11, 11, 18), 120, 'Lorem ipsum dolor sit amet');
     fixture.detectChanges();
   });
 
