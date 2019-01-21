@@ -4,4 +4,5 @@ export interface CoursesListItem {
     date: Date;
     duration: number;
     description: string;
+    topRated: boolean;
 }
