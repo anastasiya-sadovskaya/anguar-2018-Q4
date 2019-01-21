@@ -8,7 +8,7 @@ export class CourseItem implements CoursesListItem{
         public date: Date, 
         public duration: number, 
         public description: string,
-        public topRated: boolean,
+        public topRated: Boolean,
     ){ }
 }
 
