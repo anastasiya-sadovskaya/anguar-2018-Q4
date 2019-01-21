@@ -15,7 +15,7 @@ export class CoursesListComponent implements OnInit {
       id: 1,
       title: "Video 1", 
       date: new Date(+new Date() + this.twoDays), // upcomming
-      duration: 48,
+      duration: 148,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: true,
     },
@@ -23,7 +23,7 @@ export class CoursesListComponent implements OnInit {
       id: 2,
       title: "Video 2", 
       date: new Date(+new Date() - this.twoDays),  // fresh
-      duration: 59,
+      duration: 89,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: false,
     },
@@ -39,7 +39,7 @@ export class CoursesListComponent implements OnInit {
       id: 4,
       title: "Video 4", 
       date: new Date(25, 10, 18),
-      duration: 59,
+      duration: 75,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: true,
     },
@@ -47,7 +47,7 @@ export class CoursesListComponent implements OnInit {
       id: 5,
       title: "Video 5", 
       date: new Date(13, 12, 18),
-      duration: 59,
+      duration: 120,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: false,
     }

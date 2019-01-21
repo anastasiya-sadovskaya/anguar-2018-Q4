@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef, Renderer2} from '@angular/core';
-import { CoursesListItem } from '../shared/models/courses-list-item.model';
+import { CoursesListItem } from '../models/courses-list-item.model';
 
 @Directive({
   selector: '[appCourseBorder]'
