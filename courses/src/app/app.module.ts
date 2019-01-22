@@ -8,9 +8,10 @@ import { CoursesListModule } from './courses-list/courses-list.module';
 import { AppComponent } from './app.component';
 import { SearchSectionComponent } from './courses-list/search-section/search-section.component';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

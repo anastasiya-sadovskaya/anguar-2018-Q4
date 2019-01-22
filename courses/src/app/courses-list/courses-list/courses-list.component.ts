@@ -38,7 +38,7 @@ export class CoursesListComponent implements OnInit {
     {
       id: 4,
       title: "Video 4", 
-      date: new Date(25, 10, 18),
+      date: new Date(2018, 10, 6),
       duration: 75,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: true,
@@ -46,7 +46,7 @@ export class CoursesListComponent implements OnInit {
     {
       id: 5,
       title: "Video 5", 
-      date: new Date(13, 12, 18),
+      date: new Date(2018, 11, 18),
       duration: 120,
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       topRated: false,
