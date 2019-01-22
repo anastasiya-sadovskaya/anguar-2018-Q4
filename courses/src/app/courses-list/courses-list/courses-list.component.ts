@@ -6,10 +6,10 @@ import { CoursesListItem } from '../../shared/models/courses-list-item.model';
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss']
 })
-export class CoursesListComponent implements OnInit {
+export class CoursesListComponent {
 
+  private searchRequest: string;
   private twoDays = 2*24*3600*1000;
-  public displayedCourses: CoursesListItem[];
 
   public coursesList: CoursesListItem [] = [
     {
@@ -54,10 +54,6 @@ export class CoursesListComponent implements OnInit {
     }
   ]
 
-  ngOnInit() {
-    this.displayedCourses = this.coursesList;
-  }
-
   onSeeMoreClick(): void{
     console.log("See more");
   }
@@ -66,9 +62,7 @@ export class CoursesListComponent implements OnInit {
     console.log(itemId);
   }
 
-  onSearchClick(searchReq: string): void {
-    this.displayedCourses = this.coursesList.filter(
-      (course: CoursesListItem) => course.title.replace(/\s/g, '').toLowerCase().indexOf(searchReq.replace(/\s/g, '').toLowerCase()) !== -1
-    );
+  onSearchClick(searchRequest: string): void {
+    this.searchRequest = searchRequest;
   }
 }
