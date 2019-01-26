@@ -8,4 +8,21 @@
     .date{
         text-align: right;
     }
+
+    &.upcomming{
+        border: 2px solid #2d85a8;
+    }
+
+    &.fresh{
+        border: 2px solid #539246;
+    }
+
+    .top-rated-item{
+        &:after{
+            content: '\2605';
+            padding-left: .5rem;
+            font-size: 1.5rem;
+            color: #ffc107;
+        }
+    }
 }
