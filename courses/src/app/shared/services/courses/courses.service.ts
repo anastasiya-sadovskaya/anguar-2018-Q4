@@ -56,4 +56,10 @@ export class CoursesService {
   getCourses(): Observable<CoursesListItem[]> {
     return of(this.coursesList);
   }
+
+  removeCourseItem(id: number): Observable<CoursesListItem[]> {
+    this.coursesList = this.coursesList.filter((course: CoursesListItem) => course.id !== id);
+
+    return of(this.coursesList);
+  }
 }

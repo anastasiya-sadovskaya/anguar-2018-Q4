@@ -18,7 +18,10 @@ export class CoursesListComponent {
   }
 
   getCourses():void{
-    this.coursesService.getCourses().subscribe(coursesList => this.coursesList = coursesList);;
+    this.coursesService.getCourses()
+      .subscribe((coursesList: CoursesListItem[]) => {
+        this.coursesList = coursesList
+      });
   }
 
   onSeeMoreClick(): void{
@@ -26,7 +29,13 @@ export class CoursesListComponent {
   }
 
   onCourseItemDelete(itemId:number): void{
-    console.log(itemId);
+    if(confirm('Do you really want to delete this course?')){
+      console.log(itemId);
+      this.coursesService.removeCourseItem(itemId)
+        .subscribe((coursesList: CoursesListItem[]) => {
+          this.coursesList = coursesList;
+        });
+    };
   }
 
   onSearchClick(searchRequest: string): void {
