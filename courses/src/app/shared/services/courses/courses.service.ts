@@ -62,4 +62,22 @@ export class CoursesService {
 
     return of(this.coursesList);
   }
+
+  createCourse(course: CoursesListItem): Observable<CoursesListItem> {
+    this.coursesList.push(course);
+    
+    return of(course);
+  }
+
+  getItemById(id: number): Observable<CoursesListItem> {
+    const course: CoursesListItem = this.coursesList.find((course: CoursesListItem) => course.id === id);
+
+    return of(course);
+  }
+
+  updateItem(id: number, updatedCourse: CoursesListItem): Observable<CoursesListItem> {
+    this.coursesList = [...this.coursesList.filter((course: CoursesListItem) => course.id !== id), updatedCourse];
+
+    return of(updatedCourse);
+  }
 }
