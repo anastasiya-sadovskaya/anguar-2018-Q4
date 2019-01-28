@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../shared/services/auth/auth.service';
+import { Router } from '@angular/router';
+import { User } from '../../shared/classes-implementing/classes-implementing'
 
 @Component({
   selector: 'app-header',
@@ -6,13 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public user: User ;
 
-  userName = "Anastasiya";
+  constructor(public authService:AuthService, private router: Router) { }
 
-  constructor() {
-   }
-
-  ngOnInit() {
+  ngOnInit() {      
+    this.authService.getUserInfo().subscribe((user) => this.user = user);  
   }
 
+  isAuthenticated(){
+    return this.authService.isAuthenticated();
+  }
+
+  onLogInBtnClick(){
+    this.router.navigate(['/login']);
+  }
+
+  onLogOutBtnClick(){
+    this.authService.logOut();
+  }
 }

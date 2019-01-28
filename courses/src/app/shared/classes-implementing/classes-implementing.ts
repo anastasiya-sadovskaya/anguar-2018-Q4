@@ -1,5 +1,5 @@
 import { CoursesListItem } from "../models/courses-list-item.model";
-import { User } from '../models/user.model';
+import { UserI } from '../models/user.model';
 
 export class CourseItem implements CoursesListItem{
     constructor(
@@ -12,10 +12,12 @@ export class CourseItem implements CoursesListItem{
     ){ }
 }
 
-export class SomeUser implements User{
+export class User implements UserI{
+    
     constructor(
         public id: number, 
         public firstName: string, 
-        public lastName: string
+        public lastName: string,
+        public userName: string,
     ){ }
 }
