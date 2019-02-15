@@ -33,12 +33,12 @@ describe('SearchSectionComponent', () => {
     const searchInputElement: HTMLInputElement = fixture.nativeElement.querySelector('#searchInput');
     const searchBtnElement: HTMLButtonElement = fixture.nativeElement.querySelector('#searchBtn');
 
-    spyOn(component, 'onSearchClick');
+    spyOn(component, 'onClickHandler');
     searchInputElement.value = req;
     fixture.detectChanges();
 
     searchBtnElement.click();
     
-    expect(component.onSearchClick).toHaveBeenCalled();
+    expect(component.onClickHandler).toHaveBeenCalled();
   });  
 });

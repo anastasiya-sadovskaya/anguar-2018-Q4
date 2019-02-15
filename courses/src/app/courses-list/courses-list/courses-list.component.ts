@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesListItem } from '../../shared/models/courses-list-item.model';
+import { CoursesService } from '../../shared/services/courses/courses.service'
 
 @Component({
   selector: 'app-courses-list',
@@ -7,59 +8,34 @@ import { CoursesListItem } from '../../shared/models/courses-list-item.model';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent {
-
+  public coursesList: CoursesListItem [];
   private searchRequest: string;
-  private twoDays = 2*24*3600*1000;
 
-  public coursesList: CoursesListItem [] = [
-    {
-      id: 1,
-      title: "Video 1", 
-      date: new Date(+new Date() + this.twoDays), // upcomming
-      duration: 148,
-      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      topRated: true,
-    },
-    {
-      id: 2,
-      title: "Video 2", 
-      date: new Date(+new Date() - this.twoDays),  // fresh
-      duration: 89,
-      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      topRated: false,
-    },
-    {
-      id: 3,
-      title: "Video 3", 
-      date: new Date(+new Date() - (8 * this.twoDays)),   // old
-      duration: 35,
-      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      topRated: true,
-    },
-    {
-      id: 4,
-      title: "Video 4", 
-      date: new Date(2018, 10, 6),
-      duration: 75,
-      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      topRated: true,
-    },
-    {
-      id: 5,
-      title: "Video 5", 
-      date: new Date(2018, 11, 18),
-      duration: 120,
-      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      topRated: false,
-    }
-  ]
+  constructor(private coursesService: CoursesService){ }
+
+  ngOnInit() {
+    this.getCourses();
+  }
+
+  getCourses():void{
+    this.coursesService.getCourses()
+      .subscribe((coursesList: CoursesListItem[]) => {
+        this.coursesList = coursesList
+      });
+  }
 
   onSeeMoreClick(): void{
     console.log("See more");
   }
 
   onCourseItemDelete(itemId:number): void{
-    console.log(itemId);
+    if(confirm('Do you really want to delete this course?')){
+      console.log(itemId);
+      this.coursesService.removeCourseItem(itemId)
+        .subscribe((coursesList: CoursesListItem[]) => {
+          this.coursesList = coursesList;
+        });
+    };
   }
 
   onSearchClick(searchRequest: string): void {
