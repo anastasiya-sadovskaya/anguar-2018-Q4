@@ -27,7 +27,6 @@ export class EditCourseComponent implements OnInit {
   }
 
   saveItem() {
-    console.log(`Title: ${this.course.title}, Description: ${this.course.description}`);
     this.router.navigate(['/'])
   }
 
