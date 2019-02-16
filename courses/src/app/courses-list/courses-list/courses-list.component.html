@@ -1,6 +1,6 @@
-<app-search-section (searchVideo)="onSearchClick($event)"></app-search-section>
+<app-search-section (searchVideo)="onSearchClick($event)" (addCourse)="onAddCourseClick()"></app-search-section>
 <div class="courses-list list-group" *ngIf="coursesList.length">
-  <app-courses-list-item *ngFor="let item of (coursesList | filterCourses : searchRequest | orderedBy)" [coursesItem]="item" (courseItemDelete)="onCourseItemDelete($event)" ></app-courses-list-item>
+  <app-courses-list-item *ngFor="let item of (coursesList | filterCourses : searchRequest | orderedBy)" [coursesItem]="item" (courseItemEdit)="onCourseItemEdit($event)" (courseItemDelete)="onCourseItemDelete($event)" ></app-courses-list-item>
   <button id="seeMoreBtn" class="btn btn-outline-secondary dark w-100 col-12 mb-4" (click)="onSeeMoreClick()">See more</button>
 </div>
 <div class="no-data" *ngIf="!coursesList.length">No data. Feel free to add new course</div>

@@ -9,8 +9,13 @@ export class SearchSectionComponent {
   public searchRequest:string;
 
   @Output() public searchVideo = new EventEmitter<string>();
+  @Output() public addCourse = new EventEmitter<string>();
 
-  onClickHandler(): void {
+  onSearchClickHandler(): void {
     this.searchVideo.emit(this.searchRequest);
+  }
+
+  onAddClickHandler(){
+    this.addCourse.emit();
   }
 }

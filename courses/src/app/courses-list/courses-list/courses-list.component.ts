@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesListItem } from '../../shared/models/courses-list-item.model';
-import { CoursesService } from '../../shared/services/courses/courses.service'
+import { CoursesService } from '../../shared/services/courses/courses.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list',
@@ -11,7 +13,7 @@ export class CoursesListComponent {
   public coursesList: CoursesListItem [];
   private searchRequest: string;
 
-  constructor(private coursesService: CoursesService){ }
+  constructor(private coursesService: CoursesService, private router: Router){ }
 
   ngOnInit() {
     this.getCourses();
@@ -28,6 +30,11 @@ export class CoursesListComponent {
     console.log("See more");
   }
 
+  onCourseItemEdit(itemId:number): void{
+    
+    this.router.navigate(['/edit'])
+  }
+
   onCourseItemDelete(itemId:number): void{
     if(confirm('Do you really want to delete this course?')){
       console.log(itemId);
@@ -40,5 +47,9 @@ export class CoursesListComponent {
 
   onSearchClick(searchRequest: string): void {
     this.searchRequest = searchRequest;
+  }
+
+  onAddCourseClick(){
+    this.router.navigate(['/edit']);
   }
 }
