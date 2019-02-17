@@ -9,8 +9,8 @@
         <label for="description">Description</label>
         <textarea class="form-control" id="description" [(ngModel)]="course.description" name="description" rows="4"></textarea>
       </div>
-      <app-date-input [date]="course.date"></app-date-input>
-      <app-duration-input [duration]="course.duration"></app-duration-input>
+      <app-date-input [date]="course.date" (changeDate)="onChangeDateClickHandler($event)"></app-date-input>
+      <app-duration-input [duration]="course.duration" (changeDuration)="onChangeDurationClickHandler($event)"></app-duration-input>
       <app-authors-input></app-authors-input>
 
       <button type="submit" class="btn btn-primary mr-2" (click)="saveItem()">Save</button>
