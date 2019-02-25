@@ -13,7 +13,7 @@ export class DurationInputComponent implements OnInit {
 
   ngOnInit() { }
 
-  onChangeHandler(){
+  onChangeHandler() {
     this.changeDuration.emit(+this.duration);
   }
 

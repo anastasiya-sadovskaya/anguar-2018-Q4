@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { CoursesListModule } from './courses-list/courses-list.module';
 import { AuthModule } from './auth/auth.module';
-import { EditCourseModule } from './edit-course/edit-course.module'
+import { CourseInfoModule } from './course-info/course-info.module';
 
 import { AppComponent } from './app.component';
 import { SearchSectionComponent } from './courses-list/search-section/search-section.component';
@@ -22,7 +22,7 @@ import { SearchSectionComponent } from './courses-list/search-section/search-sec
     CoreModule,
     CoursesListModule,
     AuthModule,
-    EditCourseModule
+    CourseInfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

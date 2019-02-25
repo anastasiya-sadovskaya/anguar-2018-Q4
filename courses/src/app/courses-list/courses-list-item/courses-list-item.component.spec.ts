@@ -10,7 +10,7 @@ import { CourseItem } from './../../shared/classes-implementing/classes-implemen
 })
 class TestHostComponent {
   course: CourseItem ;
-  public onCourseItemDelete() {};
+  public onCourseItemDelete() {}
 }
 
 
@@ -59,7 +59,7 @@ describe('CoursesListItemComponent', () => {
       expect(courseItem.querySelector('.description').textContent).toBe('Lorem ipsum dolor sit amet');
     });
   });
-  
+
   it('Click on delete button should rise event', () => {
     const deleteBtnElement: HTMLButtonElement = fixture.nativeElement.querySelector('#deleteCourseItemBtn');
     spyOn(component, 'onCourseItemDelete');

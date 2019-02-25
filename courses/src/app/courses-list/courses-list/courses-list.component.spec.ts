@@ -29,7 +29,7 @@ describe('CoursesListComponent', () => {
 
   it('should log "See more"', () => {
     spyOn(console, 'log');
-    const button:HTMLElement = fixture.debugElement.query(By.css('#seeMoreBtn')).nativeElement;
+    const button: HTMLElement = fixture.debugElement.query(By.css('#seeMoreBtn')).nativeElement;
     button.click();
 
     expect(console.log).toHaveBeenCalledWith('See more');

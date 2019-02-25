@@ -9,7 +9,7 @@ import { SharedModule } from './../shared/shared.module';
 @NgModule({
   declarations: [
     CoursesListComponent,
-    CoursesListItemComponent, 
+    CoursesListItemComponent,
     SearchSectionComponent,
   ],
   imports: [

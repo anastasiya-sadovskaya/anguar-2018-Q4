@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {CourseItem} from './../classes-implementing/classes-implementing'
+import {CourseItem} from './../classes-implementing/classes-implementing';
 
 @Pipe({
   name: 'orderedBy'

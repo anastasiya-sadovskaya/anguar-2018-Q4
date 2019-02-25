@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CoursesListItem } from '../../shared/models/courses-list-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -12,17 +13,16 @@ export class CoursesListItemComponent implements OnInit {
   @Output() public courseItemDelete = new EventEmitter<number>();
   @Output() public courseItemEdit = new EventEmitter<number>();
 
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit() {
   }
 
-  onEditClick(){
-    localStorage.setItem('editCourseId', ''+this.coursesItem.id);
-    this.courseItemEdit.emit(this.coursesItem.id);
+  onEditClick() {
+    this.router.navigate(['/course', this.coursesItem.id]);
   }
 
-  onDeleteClick(){
+  onDeleteClick() {
     this.courseItemDelete.emit(this.coursesItem.id);
   }
 

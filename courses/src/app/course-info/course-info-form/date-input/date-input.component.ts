@@ -13,7 +13,7 @@ export class DateInputComponent implements OnInit {
 
   ngOnInit() { }
 
-  onChangeHandler(){
+  onChangeHandler() {
     this.changeDate.emit(new Date(this.date));
   }
 
