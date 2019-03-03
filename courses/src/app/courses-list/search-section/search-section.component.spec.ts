@@ -29,16 +29,15 @@ describe('SearchSectionComponent', () => {
   });
 
   it('Click on search button should log text from input', () => {
-    const req: string = 'some request';
+    const req = 'some request';
     const searchInputElement: HTMLInputElement = fixture.nativeElement.querySelector('#searchInput');
     const searchBtnElement: HTMLButtonElement = fixture.nativeElement.querySelector('#searchBtn');
 
-    spyOn(component, 'onClickHandler');
+    spyOn(component, 'onSearchClickHandler');
     searchInputElement.value = req;
     fixture.detectChanges();
 
     searchBtnElement.click();
-    
-    expect(component.onClickHandler).toHaveBeenCalled();
-  });  
+    expect(component.onSearchClickHandler).toHaveBeenCalled();
+  });
 });

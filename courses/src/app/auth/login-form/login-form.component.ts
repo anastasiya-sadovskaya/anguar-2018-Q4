@@ -8,17 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  private userName:string;
-  private password:string;
+  public userName: string;
+  public password: string;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onLoginClick(){
+  onLoginClick() {
     console.log('userName:', this.userName, 'password:', this.password);
-    this.authService.logIn(this.userName, this.password).subscribe(() => this.router.navigate(['/courses']))
+    this.authService.logIn(this.userName, this.password).subscribe((isAuth) => {
+      if (isAuth) {
+        this.router.navigate( ['/courses'] );
+      } else {
+        this.userName = '';
+        this.password = '';
+        alert('Incorrect user or password');
+      }
+    });
   }
-
-} 
+}

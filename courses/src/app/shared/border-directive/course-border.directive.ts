@@ -1,13 +1,13 @@
-import { Directive, Input, ElementRef, Renderer2} from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, OnInit} from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
 
 @Directive({
   selector: '[appCourseBorder]'
 })
-export class CourseBorderDirective {
+export class CourseBorderDirective implements OnInit {
   @Input() appCourseBorder: Date;
 
-  constructor(private el: ElementRef) { };
+  constructor(private el: ElementRef) { }
 
    ngOnInit() {
     const className2 = this.appCourseBorder;
@@ -17,17 +17,16 @@ export class CourseBorderDirective {
     }
    }
 
-   getState(){
+   getState() {
     const currentDate = +new Date();
-    const twoWeeksInMiliSecs = 14*24*60*60*1000;
+    const twoWeeksInMiliSecs = 14 * 24 * 60 * 60 * 1000;
     const freshDate = currentDate - twoWeeksInMiliSecs;
 
-    if(+this.appCourseBorder > currentDate){
-      return "upcomming"
+    if (+this.appCourseBorder > currentDate) {
+      return 'upcomming';
     }
-    
-    if(+this.appCourseBorder > freshDate){
-      return "fresh";
+    if (+this.appCourseBorder > freshDate) {
+      return 'fresh';
     }
    }
 

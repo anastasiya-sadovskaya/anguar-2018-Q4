@@ -26,9 +26,8 @@ describe('BreadcrumbsComponent', () => {
   it('should contain "Courses', () => {
     fixture.detectChanges();
 
-    const element:HTMLElement = fixture.nativeElement;
-    const content:HTMLElement = element.querySelector('.breadcrumb');
-    
+    const element: HTMLElement = fixture.nativeElement;
+    const content: HTMLElement = element.querySelector('.breadcrumb');
     expect(content.textContent).toBe('Courses');
   });
 });

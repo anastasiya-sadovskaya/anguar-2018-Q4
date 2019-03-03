@@ -26,8 +26,8 @@ describe('FooterComponent', () => {
   it('should contain "Copyright © Videocourses, All Rights Reserved."', () => {
     fixture.detectChanges();
 
-    const element:HTMLElement = fixture.nativeElement;
-    const content:HTMLElement = element.querySelector('.footer__content');
+    const element: HTMLElement = fixture.nativeElement;
+    const content: HTMLElement = element.querySelector('.footer__content');
       expect(content.textContent).toBe('Copyright © Videocourses, All Rights Reserved.');
   });
 });
