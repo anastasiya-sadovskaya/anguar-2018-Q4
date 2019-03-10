@@ -4,11 +4,11 @@ import { UserI } from '../models/user.model';
 export class CourseItem implements CoursesListItem {
     constructor(
         public id: number,
-        public title: string,
+        public name: string,
         public date: Date,
-        public duration: number,
+        public length: number,
         public description: string,
-        public topRated: Boolean,
+        public isTopRated: Boolean,
     ) { }
 }
 

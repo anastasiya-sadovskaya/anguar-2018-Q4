@@ -15,7 +15,7 @@ export class FilterCoursesPipe implements PipeTransform {
       return courses;
     }
       return courses.filter((course: CourseItem) =>
-        course.title.replace(/\s/g, '').toLowerCase().indexOf(searchReq.replace(/\s/g, '').toLowerCase()) !== -1
+        course.name.concat(course.description).replace(/\s/g, '').toLowerCase().indexOf(searchReq.replace(/\s/g, '').toLowerCase()) !== -1
     );
   }
 
