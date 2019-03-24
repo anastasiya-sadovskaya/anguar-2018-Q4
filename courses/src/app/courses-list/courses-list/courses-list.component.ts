@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class CoursesListComponent implements OnInit {
   public coursesList: CoursesListItem [] = [];
-  private coursesStart: number = 0;
-  private coursesCount: number = 5; // TODO: add config file
-  public searchRequest: string = '';
+  private coursesStart = 0;
+  private coursesCount = 5; // TODO: add config file
+  public searchRequest = '';
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private router: Router) { }
 
@@ -27,7 +27,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   getCourses(): void {
-    let params = {textFragment: `${this.searchRequest}`, start: `${this.coursesStart}`, count: `${this.coursesCount}`};
+    const params = {textFragment: `${this.searchRequest}`, start: `${this.coursesStart}`, count: `${this.coursesCount}`};
     this.coursesService.getCourses(params)
       .subscribe((coursesList: CoursesListItem[]) => {
         this.coursesList = coursesList;

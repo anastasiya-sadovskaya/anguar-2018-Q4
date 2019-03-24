@@ -32,7 +32,7 @@ export class CourseInfoFormComponent implements OnInit {
       }
     });
   }
-  
+
   saveItem() {
     const newCourse = {name: this.course.name,
                        date: this.course.date,
@@ -40,7 +40,7 @@ export class CourseInfoFormComponent implements OnInit {
                        description: this.course.description};
     if (this.course.id !== this.id) {
       this.coursesService.updateItem(this.course.id, newCourse)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.router.navigate(['/']);
       });
     } else {

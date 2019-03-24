@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SearchSectionComponent } from './courses-list/search-section/search-section.component';
-import { AuthInterceptor } from './shared/services/auth/auth-interceptor'
+import { AuthInterceptor } from './shared/services/auth/auth-interceptor';
 
 
 @NgModule({

@@ -11,7 +11,7 @@ const BASE_URL = 'http://localhost:3004/courses';
 
 export class CoursesService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCourses(params ): Observable<CoursesListItem[]> {
     return this.http.get<CoursesListItem[]>(BASE_URL, {params});

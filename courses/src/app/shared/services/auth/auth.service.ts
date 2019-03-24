@@ -10,13 +10,12 @@ const BASE_URL = `http://localhost:3004/auth`;
   providedIn: 'root'
 })
 export class AuthService {
-  private token: string = '';
   private authorisedUser: UserI;
 
   constructor(private http: HttpClient) { }
 
   public logIn(login: string, password: string) {
-    return this.http.post(`${BASE_URL}/login`, { login, password })
+    return this.http.post(`${BASE_URL}/login`, { login, password });
   }
 
   public logOut(): Observable<void> {
@@ -30,6 +29,6 @@ export class AuthService {
   }
 
   public getUserInfo(): Observable<any> {
-    return this.http.post(`${BASE_URL}/userinfo`, null)
+    return this.http.post(`${BASE_URL}/userinfo`, null);
   }
 }
