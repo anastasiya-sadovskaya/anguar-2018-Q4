@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { User } from '../../shared/classes-implementing/classes-implementing';
+import { UserI } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -9,17 +9,17 @@ import { User } from '../../shared/classes-implementing/classes-implementing';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public user: User ;
+  public user: UserI ;
 
   constructor(public authService: AuthService, private router: Router) { }
 
   get userName(): string {
-    return `${this.user.firstName} ${this.user.lastName}`;
+    return `${this.user.name.first} ${this.user.name.last}`;
   }
 
   ngOnInit() {
     const userName = localStorage.getItem('auth');
-    this.authService.getUserInfo( userName ).subscribe((user) => this.user = user);
+    this.authService.getUserInfo().subscribe((user) => this.user = user);
   }
 
   isAuthenticated() {

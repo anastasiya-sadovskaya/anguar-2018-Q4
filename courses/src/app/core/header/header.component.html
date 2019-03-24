@@ -4,7 +4,7 @@
     <img src="assets/img/logo.png" alt="logo" />
   </a>
   <div class="header__controls float-right">
-    <div class="header__user">
+    <div class="header__user" *ngIf="user">
       <span *ngIf="isAuthenticated()" class="header__user-name">{{ userName }}</span>
     </div>
     <button *ngIf="!isAuthenticated()" class="btn btn-outline-light btn-sm" type="button" (click)="onLogInBtnClick()">Log In</button>

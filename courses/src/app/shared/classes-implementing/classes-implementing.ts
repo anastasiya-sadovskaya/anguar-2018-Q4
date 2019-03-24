@@ -15,9 +15,9 @@ export class CourseItem implements CoursesListItem {
 export class User implements UserI {
     constructor(
         public id: number,
-        public firstName: string,
-        public lastName: string,
-        public userName: string,
+        public fakeToken: string,
+        public name: any,
+        public login: string,
         public password: string,
     ) { }
 }

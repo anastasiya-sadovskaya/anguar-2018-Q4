@@ -18,14 +18,12 @@ export class LoginFormComponent implements OnInit {
 
   onLoginClick() {
     console.log('userName:', this.userName, 'password:', this.password);
-    this.authService.logIn(this.userName, this.password).subscribe((isAuth) => {
-      if (isAuth) {
-        this.router.navigate( ['/courses'] );
-      } else {
-        this.userName = '';
-        this.password = '';
-        alert('Incorrect user or password');
-      }
+    this.authService.logIn(this.userName, this.password).subscribe((res: any) => {
+      localStorage.setItem('auth', res.token);
+      this.router.navigate( ['/courses'] );
+    },
+    (error) => {
+      alert('Incorrect user or password');
     });
   }
 }

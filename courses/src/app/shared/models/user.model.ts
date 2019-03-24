@@ -1,7 +1,7 @@
 export interface UserI {
     id: number;
-    firstName: string;
-    lastName: string;
-    userName: string;
+    fakeToken: string;
+    name: any;
+    login: string;
     password: string;
 }
