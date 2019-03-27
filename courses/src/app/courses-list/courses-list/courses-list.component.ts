@@ -5,6 +5,7 @@ import { AuthService } from '../../shared/services/auth/auth.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-list',
@@ -16,7 +17,7 @@ export class CoursesListComponent implements OnInit {
   private coursesStart = 0;
   private coursesCount = 5; // TODO: add config file
   public searchRequest = '';
-  public searchRequestSubj: Observable<string> = new Subject<string>();
+  public searchRequestSubj: Observable<string> = new Subject<string>().pipe(debounceTime(1000));;
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private router: Router) { }
 
