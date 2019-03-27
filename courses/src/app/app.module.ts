@@ -6,9 +6,11 @@ import { CoreModule } from './core/core.module';
 import { CoursesListModule } from './courses-list/courses-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CourseInfoModule } from './course-info/course-info.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SearchSectionComponent } from './courses-list/search-section/search-section.component';
+import { AuthInterceptor } from './shared/services/auth/auth-interceptor';
 
 
 @NgModule({
@@ -22,9 +24,16 @@ import { SearchSectionComponent } from './courses-list/search-section/search-sec
     CoreModule,
     CoursesListModule,
     AuthModule,
-    CourseInfoModule
+    CourseInfoModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

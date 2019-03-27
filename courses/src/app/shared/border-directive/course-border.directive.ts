@@ -21,11 +21,12 @@ export class CourseBorderDirective implements OnInit {
     const currentDate = +new Date();
     const twoWeeksInMiliSecs = 14 * 24 * 60 * 60 * 1000;
     const freshDate = currentDate - twoWeeksInMiliSecs;
+    const courseDate = +new Date(this.appCourseBorder);
 
-    if (+this.appCourseBorder > currentDate) {
+    if (courseDate > currentDate) {
       return 'upcomming';
     }
-    if (+this.appCourseBorder > freshDate) {
+    if (courseDate > freshDate) {
       return 'fresh';
     }
    }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesListItem } from '../../shared/models/courses-list-item.model';
 import { CoursesService } from '../../shared/services/courses/courses.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
-
+import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-  public coursesList: CoursesListItem [];
-  public searchRequest: string;
+  public coursesList: CoursesListItem [] = [];
+  private coursesStart = 0;
+  private coursesCount = 5; // TODO: add config file
+  public searchRequest = '';
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private router: Router) { }
 
@@ -25,14 +27,16 @@ export class CoursesListComponent implements OnInit {
   }
 
   getCourses(): void {
-    this.coursesService.getCourses()
+    const params = {textFragment: `${this.searchRequest}`, start: `${this.coursesStart}`, count: `${this.coursesCount}`};
+    this.coursesService.getCourses(params)
       .subscribe((coursesList: CoursesListItem[]) => {
         this.coursesList = coursesList;
       });
   }
 
   onSeeMoreClick(): void {
-    console.log('See more');
+    this.coursesCount += this.coursesCount;
+    this.getCourses();
   }
 
   onCourseItemEdit(itemId: number): void {
@@ -44,16 +48,19 @@ export class CoursesListComponent implements OnInit {
       console.log(itemId);
       this.coursesService.removeCourseItem(itemId)
         .subscribe((coursesList: CoursesListItem[]) => {
-          this.coursesList = coursesList;
+          this.getCourses();
         });
     }
   }
 
   onSearchClick(searchRequest: string): void {
+    this.coursesStart = 0;
+    this.coursesCount = 5;
     this.searchRequest = searchRequest;
+    this.getCourses();
   }
 
   onAddCourseClick() {
-    this.router.navigate(['/edit']);
+    this.router.navigate(['/new']);
   }
 }

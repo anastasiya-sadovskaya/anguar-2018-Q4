@@ -43,16 +43,16 @@ describe('CoursesListItemComponent', () => {
       courseItem = fixture.debugElement.query(By.css('.course-list-item')).nativeElement;
     });
 
-    it('title', () => {
-      expect(courseItem.querySelector('.title').textContent).toBe('Video 6');
+    it('name', () => {
+      expect(courseItem.querySelector('.name').textContent).toBe('Video 6');
     });
 
     it('date', () => {
       expect(courseItem.querySelector('.date').textContent).toBe('Nov 11, 2018');
     });
 
-    it('duration', () => {
-      expect(courseItem.querySelector('.duration').textContent).toBe('120 mins');
+    it('length', () => {
+      expect(courseItem.querySelector('.length').textContent).toBe('120 mins');
     });
 
     it('description', () => {

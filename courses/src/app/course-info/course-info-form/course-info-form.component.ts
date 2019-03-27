@@ -11,7 +11,7 @@ import { CourseItem } from '../../shared/classes-implementing/classes-implementi
   styleUrls: ['./course-info-form.component.scss']
 })
 export class CourseInfoFormComponent implements OnInit {
-  public course: CoursesListItem;
+  public course;
   private id: number;
   private isNewCourse: boolean;
 
@@ -20,40 +20,34 @@ export class CourseInfoFormComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((data) => {
       if (data.id) {
-        this.getCourse(+data.id);
-        if (!this.course) {
+        this.coursesService.getItemById(data.id)
+        .subscribe((course: CoursesListItem) => {
+          this.course = course;
+        },
+        error => {
           this.router.navigate(['/404']);
-        }
+        });
       } else {
-        this.coursesService.getItemsQuantity()
-          .subscribe((id) => {
-            this.id = id + 1;
-          });
-        this.course = new CourseItem(this.id, '', new Date(), 0, '', false);
+        this.course = {name: '', description: '', length: 0, date: new Date()};
       }
     });
   }
 
-  getCourse(id: number): void {
-    this.coursesService.getItemById(id)
-      .subscribe((course: CoursesListItem) => {
-        this.course = course;
-      });
-  }
-
   saveItem() {
-    const newCourse = new CourseItem(this.course.id,
-                                      this.course.title,
-                                      this.course.date,
-                                      +this.course.duration,
-                                      this.course.description,
-                                      this.course.topRated);
+    const newCourse = {name: this.course.name,
+                       date: this.course.date,
+                       length: this.course.length,
+                       description: this.course.description};
     if (this.course.id !== this.id) {
-      this.coursesService.updateItem(this.course.id, newCourse);
+      this.coursesService.updateItem(this.course.id, newCourse)
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
     } else {
-      this.coursesService.createCourse(newCourse);
+      this.coursesService.createCourse(newCourse).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     }
-    this.router.navigate(['/']);
   }
 
   cancelEditting() {
@@ -64,8 +58,8 @@ export class CourseInfoFormComponent implements OnInit {
     this.course.date = date;
   }
 
-  onChangeDurationClickHandler(duration) {
-    this.course.duration = duration;
+  onChangeDurationClickHandler(length) {
+    this.course.length = length;
   }
 
 }

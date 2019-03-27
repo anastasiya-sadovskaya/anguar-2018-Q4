@@ -3,8 +3,8 @@
     <div class="col-10">
       <div class="w-100">
         <div class="row">
-          <h5 class="mb-1 col-8 title" [ngClass]="{'top-rated-item' : coursesItem.topRated}">{{coursesItem.title | uppercase}}</h5>
-          <small class="col-2 duration"><b>{{coursesItem.duration | duration}}</b></small>
+          <h5 class="mb-1 col-8 title" [ngClass]="{'top-rated-item' : coursesItem.isTopRated}">{{coursesItem.name | uppercase}}</h5>
+          <small class="col-2 length"><b>{{coursesItem.length | length}}</b></small>
           <small class="col-2 date"><b>{{coursesItem.date | date}}</b></small>
         </div>
         <div class="row">

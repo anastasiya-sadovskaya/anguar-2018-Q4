@@ -4,20 +4,20 @@ import { UserI } from '../models/user.model';
 export class CourseItem implements CoursesListItem {
     constructor(
         public id: number,
-        public title: string,
+        public name: string,
         public date: Date,
-        public duration: number,
+        public length: number,
         public description: string,
-        public topRated: Boolean,
+        public isTopRated: Boolean,
     ) { }
 }
 
 export class User implements UserI {
     constructor(
         public id: number,
-        public firstName: string,
-        public lastName: string,
-        public userName: string,
+        public fakeToken: string,
+        public name: any,
+        public login: string,
         public password: string,
     ) { }
 }
