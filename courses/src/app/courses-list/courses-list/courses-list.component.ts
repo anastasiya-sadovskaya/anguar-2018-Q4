@@ -4,6 +4,7 @@ import { CoursesService } from '../../shared/services/courses/courses.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-courses-list',
@@ -15,11 +16,17 @@ export class CoursesListComponent implements OnInit {
   private coursesStart = 0;
   private coursesCount = 5; // TODO: add config file
   public searchRequest = '';
+  public searchRequestSubj: Observable<string> = new Subject<string>();
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.getCourses();
+    this.searchRequestSubj.subscribe((searchRequest: string) => {
+      this.searchRequest = searchRequest;
+      console.log(searchRequest);
+      this.getCourses();
+    });
   }
 
   isAuthenticated() {
@@ -51,13 +58,6 @@ export class CoursesListComponent implements OnInit {
           this.getCourses();
         });
     }
-  }
-
-  onSearchClick(searchRequest: string): void {
-    this.coursesStart = 0;
-    this.coursesCount = 5;
-    this.searchRequest = searchRequest;
-    this.getCourses();
   }
 
   onAddCourseClick() {

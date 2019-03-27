@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search-section',
@@ -7,18 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-section.component.scss']
 })
 export class SearchSectionComponent {
-  public searchRequest: string;
 
-  @Output() public searchVideo = new EventEmitter<string>();
+  @Input() public searchRequestSubj: Subject<string>;
   @Output() public addCourse = new EventEmitter<string>();
 
   constructor(private router: Router) {}
 
-  onSearchClickHandler(): void {
-    this.searchVideo.emit(this.searchRequest);
-  }
-
   onAddClickHandler() {
     this.router.navigate(['/new']);
+  }
+
+  onSearchInputChange(string: string): void {
+    if (string.length > 2) {
+      this.searchRequestSubj.next(string);
+    }
   }
 }
