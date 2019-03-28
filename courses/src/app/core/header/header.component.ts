@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserI } from '../../shared/models/user.model';
@@ -11,15 +11,17 @@ import { UserI } from '../../shared/models/user.model';
 export class HeaderComponent implements OnInit {
   public user: UserI ;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
 
   get userName(): string {
     return `${this.user.name.first} ${this.user.name.last}`;
   }
 
   ngOnInit() {
-    const userName = localStorage.getItem('auth');
-    this.authService.getUserInfo().subscribe((user) => this.user = user);
+    this.authService.user.subscribe((user: UserI) => {
+      this.user = user;
+    });
+    this.authService.getUserInfo();
   }
 
   isAuthenticated() {
