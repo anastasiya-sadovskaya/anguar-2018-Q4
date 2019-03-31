@@ -7,6 +7,10 @@ import { CoursesListModule } from './courses-list/courses-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CourseInfoModule } from './course-info/course-info.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { SearchSectionComponent } from './courses-list/search-section/search-section.component';
@@ -25,7 +29,11 @@ import { AuthInterceptor } from './shared/services/auth/auth-interceptor';
     CoursesListModule,
     AuthModule,
     CourseInfoModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    AuthModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     {

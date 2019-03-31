@@ -19,18 +19,28 @@ export class AuthService {
   }
 
   public logOut(): Observable<void> {
-    localStorage.removeItem('auth');
+    this.removeToken();
 
     return of(null);
   }
 
   public isAuthenticated(): boolean {
-    return !!localStorage.getItem('auth');
+    return !!this.getToken();
   }
 
-  public getUserInfo(): void {
-    this.http.post(`${BASE_URL}/userinfo`, null).subscribe((user:UserI) => {
-      this.user.next(user);
-    });
+  public getUserInfo(): Observable<any> {
+    return this.http.post(`${BASE_URL}/userinfo`, null);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('auth');
+  }
+
+  saveToken(token: string): void {
+    localStorage.setItem('auth', token);
+  }
+
+  removeToken(): void {
+    localStorage.removeItem('auth');
   }
 }

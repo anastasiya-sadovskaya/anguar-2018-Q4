@@ -17,7 +17,7 @@ export class CoursesListComponent implements OnInit {
   private coursesStart = 0;
   private coursesCount = 5; // TODO: add config file
   public searchRequest = '';
-  public searchRequestSubj: Observable<string> = new Subject<string>().pipe(debounceTime(1000));;
+  public searchRequestSubj: Observable<string> = new Subject<string>().pipe(debounceTime(1000));
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private router: Router) { }
 
