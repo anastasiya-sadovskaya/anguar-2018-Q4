@@ -1,4 +1,5 @@
-<div class="form-group">
+<div class="form-group" [formGroup]="parentForm">
   <label>Date</label>
-  <input type="date" class="form-control" [(ngModel)]="date" name="date" (change)="onChangeHandler()">
+  <input type="date" [formControlName]="'date'" class="form-control"  name="date">
+
 </div>

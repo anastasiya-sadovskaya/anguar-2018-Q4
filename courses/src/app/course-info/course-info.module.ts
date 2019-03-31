@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CourseInfoFormComponent } from './course-info-form/course-info-form.component';
 import { DateInputComponent } from './course-info-form/date-input/date-input.component';
@@ -16,7 +16,8 @@ import { AuthorsInputComponent } from './course-info-form/authors-input/authors-
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CourseInfoModule { }

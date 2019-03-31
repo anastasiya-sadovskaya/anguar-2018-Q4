@@ -1,4 +1,5 @@
-<div class="form-group">
+<div class="form-group"  [formGroup]="parentForm">
   <label>Duration</label>
-  <input type="length" class="form-control" [(ngModel)]="length" name="length" value={{length}} (change)="onChangeHandler()">
+  <input type="text" class="form-control"  [formControlName]="'length'"  name="length">
+
 </div>
