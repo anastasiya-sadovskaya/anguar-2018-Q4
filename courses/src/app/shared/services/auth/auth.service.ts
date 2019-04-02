@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { User } from '../../classes-implementing/classes-implementing';
 import { UserI } from '../../models/user.model';
@@ -10,7 +10,7 @@ const BASE_URL = `http://localhost:3004/auth`;
   providedIn: 'root'
 })
 export class AuthService {
-  private authorisedUser: UserI;
+  public user: Subject<UserI> = new Subject();
 
   constructor(private http: HttpClient) { }
 
@@ -28,7 +28,9 @@ export class AuthService {
     return !!localStorage.getItem('auth');
   }
 
-  public getUserInfo(): Observable<any> {
-    return this.http.post(`${BASE_URL}/userinfo`, null);
+  public getUserInfo(): void {
+    this.http.post(`${BASE_URL}/userinfo`, null).subscribe((user:UserI) => {
+      this.user.next(user);
+    });
   }
 }

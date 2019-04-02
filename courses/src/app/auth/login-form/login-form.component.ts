@@ -20,6 +20,7 @@ export class LoginFormComponent implements OnInit {
     console.log('userName:', this.userName, 'password:', this.password);
     this.authService.logIn(this.userName, this.password).subscribe((res: any) => {
       localStorage.setItem('auth', res.token);
+      this.authService.getUserInfo();
       this.router.navigate( ['/courses'] );
     },
     (error) => {
