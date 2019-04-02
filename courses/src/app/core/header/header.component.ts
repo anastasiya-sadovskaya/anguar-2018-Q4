@@ -2,6 +2,10 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserI } from '../../shared/models/user.model';
+import { Store } from '@ngrx/store';
+
+import { State } from '../../auth/store/auth.reducer';
+import * as AuthActions from '../../auth/store/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +13,23 @@ import { UserI } from '../../shared/models/user.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public user: UserI ;
+  public user: UserI;
 
-  constructor(public authService: AuthService, private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
+    private store: Store<State>
+  ) { }
 
   get userName(): string {
     return `${this.user.name.first} ${this.user.name.last}`;
   }
 
   ngOnInit() {
-    this.authService.user.subscribe((user: UserI) => {
-      this.user = user;
+    this.store.select('auth').subscribe((authInfo) => {
+      this.user = authInfo.user;
     });
-    this.authService.getUserInfo();
   }
 
   isAuthenticated() {
@@ -33,7 +41,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogOutBtnClick() {
-    this.authService.logOut();
-    this.router.navigate(['/login']);
+    this.store.dispatch(new AuthActions.Logout());
   }
 }

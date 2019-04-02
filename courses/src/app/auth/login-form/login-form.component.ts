@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import { State } from '../store/auth.reducer';
+import * as AuthActions from '../store/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -11,20 +15,12 @@ export class LoginFormComponent implements OnInit {
   public userName: string;
   public password: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private store: Store<State>) { }
 
   ngOnInit() {
   }
 
   onLoginClick() {
-    console.log('userName:', this.userName, 'password:', this.password);
-    this.authService.logIn(this.userName, this.password).subscribe((res: any) => {
-      localStorage.setItem('auth', res.token);
-      this.authService.getUserInfo();
-      this.router.navigate( ['/courses'] );
-    },
-    (error) => {
-      alert('Incorrect user or password');
-    });
+    this.store.dispatch(new AuthActions.Login({login: this.userName, password: this.password}));
   }
 }
